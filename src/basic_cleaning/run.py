@@ -47,8 +47,13 @@ def go(args):
     logger.info("Converting last_review to datetime")
     df["last_review"] = pd.to_datetime(df["last_review"], errors="coerce")
 
-    logger.info("Filtering by latitude/longitude bounds")
-    in_bbox = df["longitude"].between(-74.25, -73.50) & df["latitude"].between(40.5, 41.2)
+    logger.info("Filtering by latitude/longitude bounds (NYC)")
+    # Use tighter NYC bounding box (approximate city extremes) to remove
+    # points that are clearly outside New York City limits.
+    # Source: approximate NYC bbox
+    min_long, max_long = -74.25559, -73.70001
+    min_lat, max_lat = 40.49612, 40.91553
+    in_bbox = df["longitude"].between(min_long, max_long) & df["latitude"].between(min_lat, max_lat)
     df = df[in_bbox].copy()
 
     # Finalize

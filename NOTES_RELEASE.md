@@ -23,3 +23,10 @@ Update: A follow-up patch was applied to make data-check tests run locally and a
 To publish the v1.0.1 release page via CLI (if `gh` is available locally):
 1. gh auth login
 2. gh release create v1.0.1 --title "v1.0.1" --notes-file RELEASES.md
+
+Update: A new patch release v1.0.2 has been created to tighten the NYC
+bbox used by the `basic_cleaning` step. Tag `v1.0.2` is available.
+
+To publish v1.0.2 via CLI:
+1. gh auth login
+2. gh release create v1.0.2 --title "v1.0.2" --notes-file RELEASES.md

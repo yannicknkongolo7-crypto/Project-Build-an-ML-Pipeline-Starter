@@ -24,3 +24,15 @@ Tag: `v1.0.1`
 Notes:
 - Tag v1.0.1 has been created and pushed. Please create a GitHub Release
   page for `v1.0.1` (web UI or `gh` CLI) to finalize the release.
+
+## v1.0.2 - 2025-09-23
+
+- Fix: Tighten NYC bounding box in `src/basic_cleaning/run.py` to remove
+  listings that are clearly outside New York City limits. This improves
+  the quality of the cleaned dataset used by downstream steps.
+
+Tag: `v1.0.2`
+
+Notes:
+- Tag v1.0.2 has been created and pushed. Publish a GitHub Release for
+  `v1.0.2` to complete the release process if desired.

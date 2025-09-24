@@ -16,3 +16,10 @@ Using GitHub CLI (if you have it locally):
 2. Run: `gh release create v1.0.0 --title "v1.0.0" --notes-file RELEASES.md` from the repo root.
 
 If you want me to create the release page programmatically, install and authenticate `gh` locally and re-run these steps, or grant a token-based automation with guidance.
+
+Update: A follow-up patch was applied to make data-check tests run locally and a new tag
+`v1.0.1` was created to capture this fix. Tag `v1.0.1` has been pushed.
+
+To publish the v1.0.1 release page via CLI (if `gh` is available locally):
+1. gh auth login
+2. gh release create v1.0.1 --title "v1.0.1" --notes-file RELEASES.md

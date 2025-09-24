@@ -23,11 +23,27 @@ except Exception:
 
 
 def pytest_addoption(parser):
-    parser.addoption("--csv", required=True, help="W&B artifact or local path for current sample")
-    parser.addoption("--ref", required=True, help="W&B artifact or local path for reference sample")
-    parser.addoption("--kl_threshold", type=float, required=True)
-    parser.addoption("--min_price", type=float, required=True)
-    parser.addoption("--max_price", type=float, required=True)
+    # Provide sensible defaults for local development so pytest can be
+    # executed without requiring CLI flags. CI or MLFlow runs can still
+    # override these via the command line.
+    here = os.path.dirname(os.path.dirname(__file__))
+    default_csv = os.path.join(here, "basic_cleaning", "clean_sample.csv")
+
+    parser.addoption(
+        "--csv",
+        required=False,
+        default=default_csv,
+        help="W&B artifact or local path for current sample",
+    )
+    parser.addoption(
+        "--ref",
+        required=False,
+        default=default_csv,
+        help="W&B artifact or local path for reference sample",
+    )
+    parser.addoption("--kl_threshold", type=float, required=False, default=0.5)
+    parser.addoption("--min_price", type=float, required=False, default=10.0)
+    parser.addoption("--max_price", type=float, required=False, default=350.0)
     parser.addoption("--min_rows", type=int, default=10)
     parser.addoption("--max_rows", type=int, default=500_000)
 
